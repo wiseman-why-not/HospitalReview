@@ -21,7 +21,31 @@ import javax.persistence.JoinTable;
 public class User {
 	
 	// F I E L D S
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
+	
+	@Column(name="username")
 	private String username;
+	
+	@Column(name="password")
+	private String password;
+	
+	@Column(name="age")
+	private int age;
+	
+	@Column(name="gender")
+	private String gender;
+	
+	private List<Post> posts;
+	
+	// C O N S T R U C T O R S
 
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 }
