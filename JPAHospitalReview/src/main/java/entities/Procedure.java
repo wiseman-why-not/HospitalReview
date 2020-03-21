@@ -15,8 +15,8 @@ public class Procedure {
 	@Column(name="procedure_name")
 	private String prcedureName;
 	
-	@Column(name = "price")
-	private Integer id;
+	@Column(name = "cost")
+	private Integer cost;
 	
 	@Column(name="user")
 	private User user;

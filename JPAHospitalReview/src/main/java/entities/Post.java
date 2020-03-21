@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,15 +21,23 @@ public class Post {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="content")
-	private String content;
+	@Column(name="review")
+	private String review;
 	
 	@Column(name="create_date")
 	private String createDate;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	@OneToOne
+	@JoinColumn(name="hospital_id")
+	private Hospital hospital;
+	
+	@OneToOne
+	@JoinColumn(name="hospital_id")
+	private Procedure procedure;
 	
 	// C O N S T R U C T O R S
 	public Post() {
