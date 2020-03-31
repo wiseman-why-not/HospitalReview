@@ -34,14 +34,6 @@ public class Procedure {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Procedure(int id, String prcedureName, String description, Integer cost, Post post) {
-		super();
-		this.id = id;
-		this.prcedureName = prcedureName;
-		this.description = description;
-		this.cost = cost;
-		this.post = post;
-	}
 
 	// G E T T E R S & S E T T E R S
 	
@@ -90,7 +82,7 @@ public class Procedure {
 	@Override
 	public String toString() {
 		return "Procedure [id=" + id + ", prcedureName=" + prcedureName + ", description=" + description + ", cost="
-				+ cost + ", post=" + post + "]";
+				+ cost ;
 	}
 
 	@Override

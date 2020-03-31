@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="post")
 public class Post {
@@ -31,6 +33,7 @@ public class Post {
 	@JoinColumn(name="user_id")
 	private User user;
 	
+
 	@ManyToOne
 	@JoinColumn(name="hospital_id")
 	private Hospital hospital;
@@ -106,8 +109,7 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", review=" + review + ", createDate=" + createDate + ", user=" + user + ", hospital="
-				+ hospital + ", procedure=" + procedure + "]";
+		return "Post [id=" + id + ", review=" + review + ", createDate=" + createDate + "]";
 	}
 
 	@Override

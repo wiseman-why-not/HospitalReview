@@ -7,13 +7,16 @@
 	<persistence-unit name="HospitalReviewPU">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     
-		<class>com.skilldistillery.frameworkautomation.entities.User</class>
+		<class>entities.User</class>
+		<class>entities.Post</class>
+		<class>entities.Procedure</class>
+		<class>entities.Hospital</class>
 
 
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/hospitalreviewdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=MST" />
+				value="jdbc:mysql://localhost:3306/hospitaldb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=MST" />
 			<property name="javax.persistence.jdbc.user" value="user" />
 			<property name="javax.persistence.jdbc.password" value="user" />
 			<property name="javax.persistence.jdbc.driver"

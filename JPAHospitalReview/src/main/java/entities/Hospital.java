@@ -10,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table
+@Table(name="hospital")
 public class Hospital {
 
 	// F I E L D S
@@ -26,13 +28,17 @@ public class Hospital {
 	@Column(name="street")
 	private String street;
 	
+	@Column(name="city")
+	private String city;
+	
 	@Column(name="state")
 	private String state;
 	
 	@Column(name="zip_code")
 	private Integer zipCode;
 
-	@OneToMany(mappedBy = "post")
+	
+	@OneToMany(mappedBy="post")
 	private List<Post> posts;
 	
 
@@ -43,15 +49,16 @@ public class Hospital {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Hospital(int id, String name, String street, String state, Integer zipCode) {
+	public Hospital(int id, String name, String street, String city, String state, Integer zipCode) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.street = street;
+		this.city = city;
 		this.state = state;
 		this.zipCode = zipCode;
 	}
+
 
 	// G E T T E R S & S E T T E R S
 	
@@ -84,6 +91,14 @@ public class Hospital {
 		this.street = street;
 	}
 
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
 
 	public String getState() {
 		return state;
