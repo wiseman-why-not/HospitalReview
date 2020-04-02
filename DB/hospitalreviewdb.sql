@@ -51,6 +51,22 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `procedure`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `procedure` ;
+
+CREATE TABLE IF NOT EXISTS `procedure` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `procedure_name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45) NOT NULL,
+  `cost` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `post`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `post` ;
@@ -61,10 +77,12 @@ CREATE TABLE IF NOT EXISTS `post` (
   `create date` DATETIME NOT NULL,
   `hospital_id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
+  `procedure_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   INDEX `fk_post_hospital_idx` (`hospital_id` ASC),
   INDEX `fk_post_user1_idx` (`user_id` ASC),
+  INDEX `fk_post_procedure1_idx` (`procedure_id` ASC),
   CONSTRAINT `fk_post_hospital`
     FOREIGN KEY (`hospital_id`)
     REFERENCES `hospital` (`id`)
@@ -74,28 +92,10 @@ CREATE TABLE IF NOT EXISTS `post` (
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `procedure`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `procedure` ;
-
-CREATE TABLE IF NOT EXISTS `procedure` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `procedure_name` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NOT NULL,
-  `cost` INT(11) NOT NULL,
-  `post_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  INDEX `fk_procedure_post1_idx` (`post_id` ASC),
-  CONSTRAINT `fk_procedure_post1`
-    FOREIGN KEY (`post_id`)
-    REFERENCES `post` (`id`)
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_post_procedure1`
+    FOREIGN KEY (`procedure_id`)
+    REFERENCES `procedure` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB

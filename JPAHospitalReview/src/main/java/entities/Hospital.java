@@ -37,8 +37,8 @@ public class Hospital {
 	@Column(name="zip_code")
 	private Integer zipCode;
 
-	
-	@OneToMany(mappedBy="post")
+	@JsonIgnore
+	@OneToMany(mappedBy="hospital")
 	private List<Post> posts;
 	
 

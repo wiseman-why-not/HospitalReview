@@ -40,7 +40,7 @@ public class User {
 	private String gender;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="post")
+	@OneToMany(mappedBy="user")
 	private List<Post> posts;
 	
 	// C O N S T R U C T O R S

@@ -3,6 +3,7 @@ package entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,7 +25,7 @@ public class Procedure {
 	@Column(name = "cost")
 	private Integer cost;
 	
-	@Column(name="post_id")
+	@OneToOne(mappedBy="procedure")
 	private Post post;
 	
 	// C O N S T R U C T O R S

@@ -36,7 +36,7 @@ class UserTest {
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
 		user = em.find(User.class, 5);
-		hospital = em.find(Hospital.class, 1);
+		hospital = em.find(Hospital.class, 2);
 	}
 
 	@AfterEach
@@ -53,9 +53,9 @@ class UserTest {
 	}
 	
 	@Test
-	@DisplayName("hospital anme test")
+	@DisplayName("hospital name test")
 	void test2() {
-		assertEquals("Denver Health", hospital.getName());
+		assertEquals("Saint Joseph Hospital", hospital.getName());
 	}
 	
 
