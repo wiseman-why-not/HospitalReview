@@ -1,4 +1,4 @@
-package entities;
+package com.skilldistillery.hospitalreview.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +34,7 @@ public class User {
 	private String password;
 	
 	@Column(name="age")
-	private int age;
+	private Integer age;
 	
 	@Column(name="gender")
 	private String gender;
@@ -50,7 +50,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int id, String username, String password, int age, String gender) {
+	public User(int id, String username, String password, Integer age, String gender) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -89,7 +89,7 @@ public class User {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 

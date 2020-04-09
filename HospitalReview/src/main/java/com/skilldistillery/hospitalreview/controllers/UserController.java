@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.hospitalreview.entities.User;
 import com.skilldistillery.hospitalreview.services.UserService;
-
-import entities.User;
 
 /* 
  * ***************************************************************
@@ -27,7 +27,7 @@ import entities.User;
  * @ RequestMapping Spring provides shortcuts for HTTP Verbs
  * ******************************************************************
 */
-@RequestMapping(path ="api")
+@RequestMapping("api")
 @RestController // implies both @Controller and @ResponseBody
 public class UserController {
 	
@@ -38,7 +38,14 @@ public class UserController {
 	
 	@GetMapping("user")
 	public List<User> allUsers(){
-		return null;
+		System.out.println("got to list all");
+		return userSvc.getAllUsers();
+	}
+	
+	@GetMapping("user/{userId}")
+	public User userById(@PathVariable Integer userId) {
+		System.out.println("got to list one");
+		return userSvc.findById(userId);
 	}
 
 }

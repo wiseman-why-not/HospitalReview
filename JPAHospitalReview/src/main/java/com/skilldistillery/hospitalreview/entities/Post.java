@@ -1,4 +1,4 @@
-package entities;
+package com.skilldistillery.hospitalreview.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

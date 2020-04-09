@@ -2,10 +2,17 @@ package com.skilldistillery.hospitalreview;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class HospitalReviewApplication {
+public class HospitalReviewApplication extends SpringBootServletInitializer {
 
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(HospitalReviewApplication.class);
+    }
+	
 	public static void main(String[] args) {
 		SpringApplication.run(HospitalReviewApplication.class, args);
 	}

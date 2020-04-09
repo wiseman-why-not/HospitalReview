@@ -2,7 +2,7 @@ package com.skilldistillery.hospitalreview.services;
 
 import java.util.List;
 
-import entities.User;
+import com.skilldistillery.hospitalreview.entities.User;
 
 /* ***************************************************************
  * Services are classes that hold business logic 
@@ -21,4 +21,6 @@ public interface UserService {
 	public User findByUsername(String username);
 	
 	public List<User> getAllUsers();
+
+	User findById(Integer userId);
 }

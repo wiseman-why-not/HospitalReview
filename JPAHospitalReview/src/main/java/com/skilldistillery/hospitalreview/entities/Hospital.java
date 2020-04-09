@@ -1,4 +1,4 @@
-package entities;
+package com.skilldistillery.hospitalreview.entities;
 
 import java.util.List;
 
