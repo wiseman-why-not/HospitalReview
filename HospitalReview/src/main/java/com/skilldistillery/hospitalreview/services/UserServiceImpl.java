@@ -55,7 +55,20 @@ public class UserServiceImpl implements UserService {
 	// U P D A T E 
 	@Override
 	public User updateUser(User updatedUser) {
-		User oldUser = userRepo.findByUsername(updatedUser.getUsername() );
+		User oldUser = userRepo.findById(updatedUser.getId()).get();
+		// double check code for updating user by username if id isn't getting passed
+		
+		if (updatedUser.getUsername() != null) {
+			oldUser.setUsername(updatedUser.getUsername());
+		}
+		
+		if (updatedUser.getPassword() != null) {
+			oldUser.setPassword(updatedUser.getPassword());
+		}
+		
+		if (updatedUser.getAge() > 1 || updatedUser.getAge() < 140 ) {
+			oldUser.setAge(updatedUser.getAge());
+		}
 		
 		if (updatedUser.getGender() != null) {
 			oldUser.setGender(updatedUser.getGender());
