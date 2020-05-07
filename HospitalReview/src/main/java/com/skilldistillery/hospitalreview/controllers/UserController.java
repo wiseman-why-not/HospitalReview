@@ -3,6 +3,7 @@ package com.skilldistillery.hospitalreview.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,6 +62,11 @@ public class UserController {
 	public User updateUser(@RequestBody User user) {
 		user = userSvc.updateUser(user);
 		return user;
+	}
+	
+	@DeleteMapping("user")
+	public Boolean deleteUser(@RequestBody User user) {
+		return userSvc.deleteUser(user.getUsername());
 	}
 	
 
