@@ -88,7 +88,6 @@ public class UserServiceImpl implements UserService {
 			userRepo.delete(user);
 			return true;
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}

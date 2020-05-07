@@ -12,7 +12,7 @@ import com.skilldistillery.hospitalreview.entities.User;
  * implementation code.
  * 
  * JpaRepository gives us queries by using a 
- * naming convention.useful for aggregating 
+ * naming convention. useful for aggregating 
  * data over the entity represented by the repository.
  */
 
