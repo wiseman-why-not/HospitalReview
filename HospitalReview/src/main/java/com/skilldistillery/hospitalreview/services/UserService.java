@@ -22,5 +22,7 @@ public interface UserService {
 	
 	public List<User> getAllUsers();
 
-	User findById(Integer userId);
+	public User findById(Integer userId);
+
+	public User createUser(User user);
 }

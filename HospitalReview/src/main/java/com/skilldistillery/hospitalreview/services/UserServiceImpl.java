@@ -26,14 +26,14 @@ public class UserServiceImpl implements UserService {
 	
 	
 	// C R E A T E
+	@Override
 	public User createUser(User user) {
 		// will attempt to find an id, and will auto-gen one
-		// when none is found. Done by JPA Repository
-		User newUser = userRepo.findById(user.getId() ).get();
-		
-		userRepo.saveAndFlush(newUser);
+		// when none is found. Done by JPA Repository.
+		User newUser = userRepo.saveAndFlush(user);
 		return newUser;
 	}
+	
 	
 	// R E A D
 	@Override
@@ -81,6 +81,8 @@ public class UserServiceImpl implements UserService {
 		}
 
 	}
+	
+
 
 	
 }
