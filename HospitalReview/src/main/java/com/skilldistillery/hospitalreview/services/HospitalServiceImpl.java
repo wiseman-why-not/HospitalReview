@@ -3,10 +3,21 @@ package com.skilldistillery.hospitalreview.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.hospitalreview.entities.Hospital;
 import com.skilldistillery.hospitalreview.repositories.HospitalRepository;
 
+/* ***************************************************************
+ * Services are classes that hold business logic 
+ * that can be utilized throughout your application. 
+ * The implementation inside of a service is unimportant 
+ * to the member calling upon its methods.
+ * 
+ * ***************************************************************
+ */
+
+@Service
 public class HospitalServiceImpl implements HospitalService {
 
 	@Autowired
@@ -19,10 +30,22 @@ public class HospitalServiceImpl implements HospitalService {
 	}
 
 	@Override
-	public Hospital findByUsername(String hospitalName) {
+	public Hospital findByName(String hospitalName) {
 		Hospital hospital = hRepo.findByName(hospitalName);
 		return hospital;
 	}
+	
+	@Override
+	public List<Hospital> getAllHospital() {
+		return hRepo.findAll();
+	}
+
+	@Override
+	public List<Hospital> findByNameLike(String hospitalName) {
+		// TODO Auto-generated method stub
+		return hRepo.findByNameContaining(hospitalName);
+	}
+	
 
 	@Override
 	public Hospital createHospital(Hospital hospital) {
@@ -50,12 +73,13 @@ public class HospitalServiceImpl implements HospitalService {
 			oldHospital.setZipCode(updatedHospital.getZipCode());
 		}
 		
-		return null;
+		hRepo.saveAndFlush(oldHospital);
+		return oldHospital;
 	}
 
 	@Override
-	public Boolean deleteHospital(String hospitalName) {
-		Hospital deletedHospital = hRepo.findByName(hospitalName);
+	public Boolean deleteHospital(Integer hospitalId) {
+		Hospital deletedHospital = hRepo.findById(hospitalId).get();
 		try {
 			hRepo.delete(deletedHospital);
 			return true;
@@ -65,9 +89,6 @@ public class HospitalServiceImpl implements HospitalService {
 		}
 	}
 
-	@Override
-	public List<Hospital> getAllHospital() {
-		return hRepo.findAll();
-	}
+	
 
 }
