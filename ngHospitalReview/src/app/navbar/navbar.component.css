@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: rgb(69, 74, 97);
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+}
+
+h4 {
+  color: #edf0f1;
+  margin-right: auto;
+  font-family: 'Raleway', 'sans-serif';
+}
+
+li, a, button {
+  font-family: 'Raleway', 'sans-serif';
+  font-size: 16px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.navLink li {
+  list-style: none;
+  display: inline-block;
+  padding: 0px 1em;
+}
+
+.navLink li a {
+  transition: all 0.3s ease 0s;
+}
+
+.navLink li a:hover {
+  color: #0088a9
+}
+
+button {
+  margin-left: 2em;
+  padding: .5em 2em;
+  background-color: rgba(0, 136, 169, 1);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background-color: rgba(0, 136, 169, 0.8);
+}
+
+
