@@ -13,7 +13,7 @@ export class Post {
   procedure: Procedure;
 
   // C O N S T R U C T O R
-  constructor(id: number, review: string, createDate: string, user: User, hospital: Hospital, procedure: Procedure){
+  constructor(id?: number, review?: string, createDate?: string, user?: User, hospital?: Hospital, procedure?: Procedure){
     this.id = id;
     this.review = review;
     this.createDate = createDate;

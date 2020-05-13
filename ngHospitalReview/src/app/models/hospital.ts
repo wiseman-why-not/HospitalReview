@@ -11,7 +11,7 @@ export class Hospital {
   posts: Post[];
 
   // C O N S T R U C T O R S
-  constructor(id: number, name: string, street: string, city: string, state: string, zipCode: number, posts: Post[]){
+  constructor(id?: number, name?: string, street?: string, city?: string, state?: string, zipCode?: number, posts?: Post[]){
     this.id = id;
     this.name = name;
     this.street = street;

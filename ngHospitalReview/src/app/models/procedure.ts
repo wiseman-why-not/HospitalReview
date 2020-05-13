@@ -9,7 +9,7 @@ export class Procedure {
   post: Post;
 
   // C O N S T R U C T O R
-  constructor(id:number, procdureName: string, description: string, cost: number, post: Post){
+  constructor(id?:number, procdureName?: string, description?: string, cost?: number, post?: Post){
     this.id = id;
     this.procdureName = procdureName;
     this.description = description;

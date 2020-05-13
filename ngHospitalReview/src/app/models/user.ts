@@ -11,7 +11,7 @@ export class User {
 
 
   // C O N S T R U C T O R
-  constructor(id: number, username: string, password: string, age: number, gender: string, posts: Post[]){
+  constructor(id?: number, username?: string, password?: string, age?: number, gender?: string, posts?: Post[]){
     this.id = id;
     this.username = username;
     this.password = password;
