@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
+  displayHospitals = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getSearchPage(){
+    this.displayHospitals = !this.displayHospitals;
+  }
 }
