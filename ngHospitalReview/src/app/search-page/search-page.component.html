@@ -12,18 +12,18 @@
 <!-- forms to create each entity -->
 <!-- <div id="createHospital">
   <h2>Create a Hospital</h2>
-  <form action="" method="post">
-    <input type="text" name="name" [(ngModel)]="hospital.name" placeholder="Hosptial name">
-    <input type="text" name="street" [(ngModel)]="hospital.street" placeholder="street">
-    <input type="text" name="city" [(ngModel)]="hospital.city" placeholder="city">
-    <input type="text" name="state" [(ngModel)]="hospital.state" placeholder="state">
-    <input type="text" name="zipCode" [(ngModel)]="hospital.zipCode" placeholder="zip code">
-    <input type="submit" value="create new hospital">
+  <form action="" method="post" #createHospital="ngForm">
+    <input type="text" name="name" ngModel placeholder="Hosptial name">
+    <input type="text" name="street" ngModel placeholder="street">
+    <input type="text" name="city" ngModel placeholder="city">
+    <input type="text" name="state" ngModel placeholder="state">
+    <input type="text" name="zipCode" ngModel placeholder="zip code">
+    <input type="submit" value="create new hospital" (click)="onSubmit(createHospital)">
   </form>
   <h2>{{hospital | json}}</h2>
-</div>
+</div> -->
 
-<div id="createUser">
+<!-- <div id="createUser">
   <h2>Create a User</h2>
   <form action="" method="post">
     <input type="text" name="username" [(ngModel)]="user.username" placeholder="username">
@@ -33,9 +33,9 @@
     <input type="submit" value="create new user">
   </form>
   <h2>{{user | json}}</h2>
-</div>
+</div> -->
 
-<div id="createPost">
+<!-- <div id="createPost">
   <h2>Create a Post</h2>
   <form action="" method="post">
     <input type="text" name="review" [(ngModel)]="post.review" placeholder="review">
@@ -46,9 +46,9 @@
     <input type="submit" value="create new post">
   </form>
   <h2>{{post | json}}</h2>
-</div>
+</div> -->
 
-<div id="createProcedure">
+<!-- <div id="createProcedure">
   <h2>Create a Procedure</h2>
   <form action="" method="post">
     <input type="text" name="procedureName" [(ngModel)]="procedure.procdureName" placeholder="Procedure name">

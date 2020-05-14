@@ -3,6 +3,7 @@ import { Procedure } from './../models/procedure';
 import { Component, OnInit } from '@angular/core';
 import { Hospital } from '../models/hospital';
 import { Post } from '../models/post';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-search-page',
@@ -44,6 +45,11 @@ export class SearchPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(form: NgForm){
+    console.log(form.value);
+    form.reset();
   }
 
 }
