@@ -1,3 +1,5 @@
+import { HospitalService } from './services/hospital.service';
+import { HttpClientModule} from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
@@ -8,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +23,10 @@ import { SearchPageComponent } from './search-page/search-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HospitalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
