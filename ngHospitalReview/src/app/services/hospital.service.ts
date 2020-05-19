@@ -9,26 +9,30 @@ import { Observable, throwError } from 'rxjs';
 })
 export class HospitalService {
 
-  private hospitals: Hospital[] = [
-    new Hospital(10, "Saint Evee", "321 88th St", "denver", "CO", 80218),
-    new Hospital(11, "Mercy Hercy", "822 4th blvd", "OKC", "OK", 80218),
-    new Hospital(12, "red cross", "4th Circle", "Dallas", "TX", 80218)
-  ];
+  private hospitals: Hospital[] = [];
 
-  private url = 'api/hospital'
+  private baseUrl = 'http://localhost:8087/';
+  private url = this.baseUrl + 'api/hospital'
 
   constructor(private http: HttpClient) { }
 
   // getting hopsital data
   index() : Observable<any> {
     // returns a defensive copy of the private array
-    return this.http.get<any[]>(this.url).pipe(
+    return this.http.get<any[]>(this.url + 's').pipe(
       catchError(this.handleError)
     );
   }
 
+
   show(id: number) : Observable<any> {
     return this.http.get<any>(this.url + '/' + id).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  searchedHospitals(keyword : String) : Observable<any> {
+    return this.http.get<any>(this.url + '/search/' + keyword).pipe(
       catchError(this.handleError)
     );
   }

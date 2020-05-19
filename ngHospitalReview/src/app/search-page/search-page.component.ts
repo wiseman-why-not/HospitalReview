@@ -12,42 +12,17 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
-  hospital = new Hospital;
-  user = new User;
-  post = new Post;
-  procedure = new Procedure;
+
   hospitals = [];
-  // hard coded hospitals
-  // hospitals = [
-  //   {
-  //     id: 1,
-  //     name: "saint jude",
-  //     street: "123 street",
-  //     city: "denver",
-  //     state: "CO",
-  //     zipCode: 80218
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "childres",
-  //     street: "213 street",
-  //     city: "Auroroa",
-  //     state: "CO",
-  //     zipCode: 80218
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "mercy",
-  //     street: "321 street",
-  //     city: "Golden",
-  //     state: "CO",
-  //     zipCode: 80218
-  //   }
-  // ]
+  searchedHospitals = [];
+  selected = false;
+  searchTerm = '';
+
+
   constructor(private hospitalService: HospitalService) { }
 
   ngOnInit(): void {
-    this.getAllHospitals();
+    this.reload();
   }
 
   getAllHospitals() {
@@ -57,6 +32,24 @@ export class SearchPageComponent implements OnInit {
       err => console.log('Observer got an error: ' + err)
     );
   }
+
+  getSearchedHospitals(keyword) {
+    this.searchTerm = keyword;
+    this.hospitalService.searchedHospitals(this.searchTerm).subscribe(
+      data => this.searchedHospitals = data,
+
+      err => console.log('Observer got an error: ' + err)
+    );
+  }
+
+  reload() {
+    this.hospitalService.index().subscribe(
+      data => this.hospitals = data,
+
+      err => console.log('Observer got an error: ' + err)
+    );
+  }
+
 
   createNewHospital(data) {
     this.hospitalService.create(data).subscribe(
@@ -69,6 +62,8 @@ export class SearchPageComponent implements OnInit {
 
   onSubmit(form: NgForm){
     console.log(form.value);
+    this.getSearchedHospitals(form.value);
+    this.selected = true;
     form.reset();
   }
 

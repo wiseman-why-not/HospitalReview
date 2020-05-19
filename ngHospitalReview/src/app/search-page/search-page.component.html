@@ -1,13 +1,62 @@
 <h1>Search for Hospitals</h1>
-<form action="#" method="get">
-<input type="search" name="searchHospital" id="" placeholder="Search for hospital">
-<input type="submit" value="Search">
+<form action="#" method="get" #createform = "ngForm">
+  <label for="searchedHosptial">Name: </label>
+  <input ngModel type="search" class="form-control" name="searchHospital" id="searchedHosptial" placeholder="Search for hospital" #searchTerm="ngModel" >
+  <input type="submit" value="Search" (click)="onSubmit(searchTerm)">
 </form>
 
-<div *ngFor="let hospital of hospitals">
-  <h1>{{hospital.name}}</h1>
-  <h3>{{hospital.street}}, {{hospital.city}}, {{hospital.state}} {{hospital.zipCode}}</h3>
-</div>
+<!-- searched hospital table -->
+<table *ngIf="selected">
+  <thead>
+    <tr>
+      <td>id</td>
+      <td>name</td>
+      <td>street</td>
+      <td>city</td>
+      <td>state</td>
+      <td>zip code</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hospital of searchedHospitals">
+      <td>{{hospital.id}}</td>
+      <td>{{hospital.name}}</td>
+      <td>{{hospital.street}}</td>
+      <td>{{hospital.city}}</td>
+      <td>{{hospital.state}}</td>
+      <td>zip {{hospital.zipCode}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<h1>List of All hospitals</h1>
+
+<!-- hospital table -->
+<table>
+  <thead>
+    <tr>
+      <td>id</td>
+      <td>name</td>
+      <td>street</td>
+      <td>city</td>
+      <td>state</td>
+      <td>zip code</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hospital of hospitals">
+      <td>{{hospital.id}}</td>
+      <td>{{hospital.name}}</td>
+      <td>{{hospital.street}}</td>
+      <td>{{hospital.city}}</td>
+      <td>{{hospital.state}}</td>
+      <td>zip {{hospital.zipCode}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 <!-- forms to create each entity -->
 <!-- <div id="createHospital">
