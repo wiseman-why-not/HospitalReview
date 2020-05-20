@@ -1,8 +1,8 @@
 <h1>Search for Hospitals</h1>
-<form action="#" method="get" #createform = "ngForm">
+<form action="#" method="get" #searchform = "ngForm">
   <label for="searchedHosptial">Name: </label>
   <input ngModel type="search" class="form-control" name="searchHospital" id="searchedHosptial" placeholder="Search for hospital" #searchTerm="ngModel" >
-  <input type="submit" value="Search" (click)="onSubmit(searchTerm)">
+  <input type="submit" value="Search" (click)="onSubmit(searchTerm.value)">
 </form>
 
 <!-- searched hospital table -->

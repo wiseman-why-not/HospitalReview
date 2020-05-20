@@ -60,11 +60,10 @@ export class SearchPageComponent implements OnInit {
     );
   }
 
-  onSubmit(form: NgForm){
-    console.log(form.value);
-    this.getSearchedHospitals(form.value);
+  onSubmit(form: string){
+    console.log(form);
+    this.getSearchedHospitals(form);
     this.selected = true;
-    form.reset();
   }
 
   // addHospital(hospital: Hospital){
