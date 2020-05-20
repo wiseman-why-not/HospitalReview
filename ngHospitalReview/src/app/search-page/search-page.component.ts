@@ -43,33 +43,29 @@ export class SearchPageComponent implements OnInit {
   }
 
   reload() {
-    this.hospitalService.index().subscribe(
-      data => this.hospitals = data,
-
-      err => console.log('Observer got an error: ' + err)
-    );
+    this.getAllHospitals();
   }
 
 
-  createNewHospital(data) {
-    this.hospitalService.create(data).subscribe(
-      data => {
+  createNewHospital(form: NgForm) {
+    const hospital : Hospital = form.value;
+    this.hospitalService.create(hospital).subscribe(
+      good => {
         this.getAllHospitals();
+        this.reload();
+        form.reset();
       },
       err => console.error('Observer got an error: ' + err)
     );
+
   }
 
-  onSubmit(form: string){
-    console.log(form);
-    this.getSearchedHospitals(form);
+  onSubmit(keyword: string){
+    console.log(keyword);
+    this.getSearchedHospitals(keyword);
     this.selected = true;
   }
 
-  // addHospital(hospital: Hospital){
-  //   this.hospitalService.create(hospital);
-  //   this.hospitals = this.hospitalService.index();
-  // }
 
   deleteHospital(id: number): void {
     this.hospitalService.destroyHospital(id);

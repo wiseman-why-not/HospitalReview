@@ -47,11 +47,15 @@ export class HospitalService {
   };
 
   // creating
-  create(hospital: Hospital) : Observable<any> {
-    return this.http.post<any>(this.url, hospital, this.httpOptions).pipe(
-      catchError(this.handleError)
+  create(hospital: Hospital) : Observable<Hospital> {
+    console.log(this.url);
+    return this.http.post<Hospital>(this.url, hospital, this.httpOptions).pipe(
+      catchError((err: any) => {
+        console.log('hospitalService.create(): Error creating hospital');
+        console.error(err);
+        return throwError(err);
+      })
     );
-   // this.hospitals.push(hospital);
   };
 
   // updating

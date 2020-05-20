@@ -56,6 +56,33 @@
   </tbody>
 </table>
 
+<br>
+
+<h1>Create Hospitals</h1>
+<form  #createform = "ngForm">
+  <!-- name -->
+  <label for="hospitalNamel">Name: </label>
+  <input ngModel type="text" class="form-control" name="name" id="hospitalNamel" placeholder="Hospital Name" >
+  <br>
+  <!-- street -->
+  <label for="streetl">Street Address: </label>
+  <input ngModel type="text" class="form-control" name="street" id="streetl" placeholder="Street Address" >
+  <br>
+  <!-- city -->
+  <label for="cityl">City: </label>
+  <input ngModel type="text" class="form-control" name="city" id="cityl" placeholder="City Name" >
+  <br>
+  <!-- state abbreviation -->
+  <label for="statel">State Abbreviation: </label>
+  <input ngModel type="text" class="form-control" name="state" id="statel" placeholder="State Abbreviation" >
+  <br>
+  <!-- zip code -->
+  <label for="zipCodel">Zip Code: </label>
+  <input ngModel type="number" class="form-control" name="zipCode" id="zipCodel" placeholder="Zip Code" >
+  <br>
+  <!-- submit -->
+  <input type="submit" value="Search" (click)="createNewHospital(createform)">
+</form>
 
 
 <!-- forms to create each entity -->

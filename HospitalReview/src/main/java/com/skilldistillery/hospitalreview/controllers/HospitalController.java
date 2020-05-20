@@ -45,6 +45,7 @@ public class HospitalController {
 	
 	@PostMapping("hospital")
 	public Hospital addHospital(@RequestBody Hospital hospital) {
+		System.out.println("----------- Someone is trying to create hospital : " + "-------------");
 		return hospSvc.createHospital(hospital);
 	}
 	
