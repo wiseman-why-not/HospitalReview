@@ -78,7 +78,13 @@ export class SearchPageComponent implements OnInit {
 
 
   deleteHospital(id: number): void {
-    this.hospitalService.destroyHospital(id);
+    this.hospitalService.destroyHospital(id).subscribe(
+      good => {
+        this.reload();
+        this.goBack();
+      },
+      err => console.error('Observer got an error deleting: ' + err)
+    );
   }
 
   getSelectedHospital(chosenHospital: Hospital){

@@ -84,10 +84,13 @@
     <label for="zipCodel">Zip Code: </label>
     <input [ngModel]="selectedHospital.zipCode" type="number" class="form-control" name="zipCode" id="zipCodel" value="selectedHospital.zipCode" >
     <br>
-    <!-- submit -->
-    <input type="submit" value="Update Hospital" (click)="updateHospitalById(updateform)">
+    <!-- submit button -->
+    <input type="submit" value="Update Hospital" (click)="updateHospitalById(updateform)"> <br>
     <!-- back button-->
-  <button (click)="goBack()">Back</button>
+  <button (click)="goBack()">Back</button> <br>
+  <!-- delete button -->
+  <button (click)="deleteHospital(selectedHospital.id)">Delete {{selectedHospital.name}} </button>
+
   <br>
   </form>
 
@@ -117,7 +120,7 @@
   <input ngModel type="number" class="form-control" name="zipCode" id="zipCodel" placeholder="Zip Code" >
   <br>
   <!-- submit -->
-  <input type="submit" value="Search" (click)="createNewHospital(createform)">
+  <input type="submit" value="Add Hospital" (click)="createNewHospital(createform)">
 </form>
 
 
