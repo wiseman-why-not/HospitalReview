@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skilldistillery.hospitalreview.entities.Hospital;
 import com.skilldistillery.hospitalreview.services.HospitalService;
 
-@RequestMapping("api")
 @RestController
+@RequestMapping("api")
 @CrossOrigin({"*", "http://localhost:4200"})
 public class HospitalController {
 	
@@ -51,12 +51,22 @@ public class HospitalController {
 	
 	@PutMapping("hospital")
 	public Hospital updateHospital(@RequestBody Hospital hospital) {
+		System.out.println("----------- Someone is trying to update a hospital : " + " -------------");
 		Hospital hosp = hospSvc.updateHospital(hospital);
+		return hosp;
+	}
+	
+	@PutMapping("hospital/{hospitalId}")
+	public Hospital updateHospitalById(@PathVariable Integer hospitalId, @RequestBody Hospital hospital) {
+		Hospital oldHospital = hospSvc.findById(hospitalId);
+		System.out.println("----------- Someone is trying to update a hospital by Id : " + hospital.getName() + " -------------");
+		Hospital hosp = hospSvc.updateHospitalById(hospital, oldHospital.getId());
 		return hosp;
 	}
 	
 	@DeleteMapping("hospital/{hospitalId}")
 	public Boolean deleteHospital(@PathVariable Integer hospitalId) {
+		System.out.println("----------- Someone is trying to delete a hospital : "+ hospitalId  + " -------------");
 		return hospSvc.deleteHospital(hospitalId);
 	}
 }

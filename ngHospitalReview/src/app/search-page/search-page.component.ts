@@ -17,6 +17,7 @@ export class SearchPageComponent implements OnInit {
   searchedHospitals = [];
   selected = false;
   searchTerm = '';
+  selectedHospital = null;
 
 
   constructor(private hospitalService: HospitalService) { }
@@ -29,7 +30,7 @@ export class SearchPageComponent implements OnInit {
     this.hospitalService.index().subscribe(
       data => this.hospitals = data,
 
-      err => console.log('Observer got an error: ' + err)
+      err => console.log('Observer got an error getting all hospitals: ' + err)
     );
   }
 
@@ -38,7 +39,7 @@ export class SearchPageComponent implements OnInit {
     this.hospitalService.searchedHospitals(this.searchTerm).subscribe(
       data => this.searchedHospitals = data,
 
-      err => console.log('Observer got an error: ' + err)
+      err => console.log('Observer got an error searching: ' + err)
     );
   }
 
@@ -46,18 +47,27 @@ export class SearchPageComponent implements OnInit {
     this.getAllHospitals();
   }
 
-
   createNewHospital(form: NgForm) {
     const hospital : Hospital = form.value;
     this.hospitalService.create(hospital).subscribe(
       good => {
-        this.getAllHospitals();
         this.reload();
         form.reset();
       },
-      err => console.error('Observer got an error: ' + err)
+      err => console.error('Observer got an error creating: ' + err)
     );
 
+  }
+
+  updateHospitalById(form: NgForm) {
+    const hospital : Hospital = form.value;
+    this.hospitalService.updateById(hospital.id, hospital).subscribe(
+      good => {
+        this.reload();
+        this.goBack();
+      },
+      err => console.error('Observer got an error updating: ' + err)
+    );
   }
 
   onSubmit(keyword: string){
@@ -70,5 +80,30 @@ export class SearchPageComponent implements OnInit {
   deleteHospital(id: number): void {
     this.hospitalService.destroyHospital(id);
   }
+
+  getSelectedHospital(chosenHospital: Hospital){
+    this.selectedHospital = chosenHospital;
+  }
+
+  goBack() {
+    this.selectedHospital = null;
+  }
+
+
+    // this update does not work
+  // updateHospital(form: NgForm) {
+  //   const hospital : Hospital = form.value;
+  //   console.log("this is coming for search page component: ");
+  //   console.log(form.value);
+  //   this.hospitalService.update(hospital).subscribe(
+  //     good => {
+
+  //       this.reload();
+  //       this.goBack();
+  //     },
+  //     err => console.error('Observer got an error updating: ' + err)
+  //   );
+  // }
+
 
 }

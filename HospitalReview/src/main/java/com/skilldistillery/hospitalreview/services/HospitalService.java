@@ -14,11 +14,14 @@ public interface HospitalService {
 	
 	public Hospital updateHospital(Hospital updatedHospital);
 	
+	Hospital updateHospitalById(Hospital newHospital, int id);
+	
 	public Boolean deleteHospital(Integer hospitalId);
 	
 	public List<Hospital> getAllHospital();
 	
 	public List<Hospital> findByNameLike(String hospitalName);
+
 	
 	
 }

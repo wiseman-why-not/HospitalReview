@@ -45,7 +45,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let hospital of hospitals">
+    <tr *ngFor="let hospital of hospitals" (click)="getSelectedHospital(hospital)">
       <td>{{hospital.id}}</td>
       <td>{{hospital.name}}</td>
       <td>{{hospital.street}}</td>
@@ -57,6 +57,42 @@
 </table>
 
 <br>
+
+<div *ngIf="selectedHospital">
+  <h3>Update Hospital: {{selectedHospital.name}} </h3>
+  <br>
+  <form  #updateform = "ngForm">
+    <!-- id -->
+    <input [ngModel]="selectedHospital.id" type="hidden" name="id" value="selectedHospital.id">
+    <!-- name -->
+    <label for="hospitalNamel">Name: </label>
+    <input [ngModel]="selectedHospital.name" type="text" class="form-control" name="name" id="hospitalNamel" value="selectedHospital.name" >
+    <br>
+    <!-- street -->
+    <label for="streetl">Street Address: </label>
+    <input [ngModel]="selectedHospital.street" type="text" class="form-control" name="street" id="streetl" value="selectedHospital.street" >
+    <br>
+    <!-- city -->
+    <label for="cityl">City: </label>
+    <input [ngModel]="selectedHospital.city" type="text" class="form-control" name="city" id="cityl" value="selectedHospital.city" >
+    <br>
+    <!-- state abbreviation -->
+    <label for="statel">State Abbreviation: </label>
+    <input [ngModel]="selectedHospital.state" type="text" class="form-control" name="state" id="statel" value="selectedHospital.state" >
+    <br>
+    <!-- zip code -->
+    <label for="zipCodel">Zip Code: </label>
+    <input [ngModel]="selectedHospital.zipCode" type="number" class="form-control" name="zipCode" id="zipCodel" value="selectedHospital.zipCode" >
+    <br>
+    <!-- submit -->
+    <input type="submit" value="Update Hospital" (click)="updateHospitalById(updateform)">
+    <!-- back button-->
+  <button (click)="goBack()">Back</button>
+  <br>
+  </form>
+
+
+</div>
 
 <h1>Create Hospitals</h1>
 <form  #createform = "ngForm">

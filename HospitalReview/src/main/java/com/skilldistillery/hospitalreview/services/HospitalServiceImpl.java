@@ -1,6 +1,9 @@
 package com.skilldistillery.hospitalreview.services;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.management.RuntimeErrorException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,11 +55,44 @@ public class HospitalServiceImpl implements HospitalService {
 		Hospital newHospital = hRepo.saveAndFlush(hospital);
 		return newHospital;
 	}
+	
+	@Override
+	public Hospital updateHospitalById(Hospital newHospital, int id) {
+		Optional<Hospital> managedHospital = hRepo.findById(id);
+		if (managedHospital.isPresent() ) {
+			Hospital oldHospital = managedHospital.get();
+			
+			if (newHospital.getName() != null) {
+				oldHospital.setName(newHospital.getName());
+			}
+			if (newHospital.getStreet() != null) {
+				oldHospital.setStreet(newHospital.getStreet());
+			}
+			if (newHospital.getCity() != null) {
+				oldHospital.setCity(newHospital.getCity());
+			}
+			if (newHospital.getState() != null) {
+				oldHospital.setState(newHospital.getState());
+			}
+			if (newHospital.getName() != null) {
+				oldHospital.setName(newHospital.getName());
+			}
+			if (newHospital.getZipCode() != null) {
+				oldHospital.setZipCode(newHospital.getZipCode());
+			}
+			newHospital = hRepo.saveAndFlush(oldHospital);
+			return newHospital;
+		} else {
+			throw new RuntimeException("Hospital Not Found");
+		}
+	}
 
 	@Override
 	public Hospital updateHospital(Hospital updatedHospital) {
+		
 		Hospital oldHospital = hRepo.findById(updatedHospital.getId()).get();
 		
+
 		if (updatedHospital.getName() != null) {
 			oldHospital.setName(updatedHospital.getName());
 		}
@@ -88,6 +124,8 @@ public class HospitalServiceImpl implements HospitalService {
 			return false;
 		}
 	}
+
+	
 
 	
 

@@ -59,11 +59,17 @@ export class HospitalService {
   };
 
   // updating
-  update(id: number, hospital: Hospital) : Observable<any> {
+  updateById(id: number, hospital: Hospital) : Observable<any> {
     return this.http.put<any>(this.url + '/' + id, hospital, this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
+  // this update does not work
+  // update(hospital: Hospital) : Observable<any> {
+  //   return this.http.put<any>(this.url, this.httpOptions).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
 
   // removing data
   destroyHospital(hospitalId : number) : Observable<any> {

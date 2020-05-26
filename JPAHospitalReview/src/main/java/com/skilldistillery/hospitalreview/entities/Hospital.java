@@ -157,7 +157,7 @@ public class Hospital {
 
 	@Override
 	public String toString() {
-		return "Hospital [id=" + id + "]";
+		return "Hospital [name=" + name + "]";
 	}
 	 
 	
