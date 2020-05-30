@@ -1,1 +1,40 @@
-<p>search-users works!</p>
+<h1>Search User</h1>
+<form #searchUserForm="ngForm" (ngSubmit)="onSubmit()">
+  <label for="username">Username: </label>
+  <input type="search" name="username" id="" placeholder="123RickRoll">
+  <input type="submit" value="Search User">
+</form>
+
+
+
+<br>
+<h1>List of all Users</h1>
+<table>
+  <thead>
+    <tr>
+      <td>id</td>
+      <td>username</td>
+      <td>password</td>
+      <td>age</td>
+      <td>gender</td>
+      <td>posts</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.password}}</td>
+      <td>{{user.age}}</td>
+      <td>{{user.gender}}</td>
+      <td>
+        <!-- list of user's post -->
+        <p *ngFor="let post of user.posts">{{post}}</p>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
+<br>
+<h1>Create User</h1>
+
