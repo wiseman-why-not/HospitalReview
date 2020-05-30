@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { SearchUsersComponent } from './util/search-users/search-users.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
     NavbarComponent,
     LandingPageComponent,
     FooterComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    SearchUsersComponent
   ],
   imports: [
     BrowserModule,
