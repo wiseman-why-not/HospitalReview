@@ -15,7 +15,7 @@ export class SearchUsersComponent implements OnInit {
   users: User[] = [];
   searchedUsers = [];
   foundUsers = false;
-  seletedUser = null;
+  selectedUser = null;
   searchTerm = '';
     // F I E L D S
     // id: number;
@@ -58,6 +58,10 @@ export class SearchUsersComponent implements OnInit {
     this.foundUsers = true;
   }
 
+  getSelectedUser(chosenUser: User){
+    this.selectedUser = chosenUser;
+  }
+
   createNewUser(form: NgForm){
     const user: User = form.value;
     console.log(user);
@@ -72,7 +76,9 @@ export class SearchUsersComponent implements OnInit {
 
   }
 
-
+  goBack(){
+    this.selectedUser = null;
+  }
 
 
 }

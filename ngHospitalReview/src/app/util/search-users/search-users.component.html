@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of searchedUsers">
+    <tr *ngFor="let user of searchedUsers" (click)="getSelectedUser(user)">
       <td>{{user.id}}</td>
       <td>{{user.username}}</td>
       <td>{{user.password}}</td>
@@ -50,7 +50,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users">
+    <tr *ngFor="let user of users" (click)="getSelectedUser(user)">
       <td>{{user.id}}</td>
       <td>{{user.username}}</td>
       <td>{{user.password}}</td>
@@ -63,6 +63,34 @@
     </tr>
   </tbody>
   </table>
+
+  <br>
+
+<div *ngIf="selectedUser">
+  <h3>Update {{selectedUser.username}}</h3>
+  <form #updateUserForm="ngForm">
+    <input [ngModel]="selectedUser.id" type="hidden" name="id" value="selectedUser.id">
+
+    <label for="username">Username:</label>
+    <input [ngModel]="selectedUser.username" type="text" name="username" id="username" value="selectedUser.username"> <br>
+
+    <label for="password">password:</label>
+    <input [ngModel]="selectedUser.password" type="text" name="password" id="password" value="selectedUser.password"> <br>
+
+    <label for="age">age:</label>
+    <input [ngModel]="selectedUser.age" type="text" name="age" id="age" value="selectedUser.age"> <br>
+
+    <label for="gender">gender:</label>
+    <input [ngModel]="selectedUser.gender" type="text" name="gender" id="gender" value="selectedUser.gender"> <br>
+
+    <!-- update user button -->
+    <input type="submit" value="Update {{selectedUser.username}}"> <br>
+    <!-- back button -->
+    <button (click)="goBack()">Go Back</button> <br>
+    <!-- delete button -->
+    <button>Delete {{selectedUser.username}}</button> <br>
+  </form>
+</div>
 
 <br>
 <h1>Create User</h1>
