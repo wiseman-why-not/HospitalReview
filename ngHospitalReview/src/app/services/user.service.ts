@@ -66,7 +66,7 @@ export class UserService {
 
    // Updating Users
    update(id: number, user : User) : Observable<any>{
-    return this.http.post<any>(this.url + "/" + id, user, this.httpOptions).pipe(
+    return this.http.post<any>(this.url, user, this.httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('Error updating user');

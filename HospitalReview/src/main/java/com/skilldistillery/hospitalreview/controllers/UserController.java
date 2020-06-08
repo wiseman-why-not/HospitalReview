@@ -75,6 +75,14 @@ public class UserController {
 		return user;
 	}
 	
+	// update user by Id
+	
+//	@PutMapping("user/{userId}")
+//	public User updateUserById(@PathVariable Integer userId, @RequestBody User user) {
+//		System.out.println("----------- Someone is trying to update  User : " + userId + " -------------");
+//		
+//	}
+	
 	@DeleteMapping("user")
 	public Boolean deleteUser(@RequestBody User user) {
 		System.out.println("----------- Someone is trying to delete a User : " + "-------------");

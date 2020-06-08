@@ -84,7 +84,7 @@
     <input [ngModel]="selectedUser.gender" type="text" name="gender" id="gender" value="selectedUser.gender"> <br>
 
     <!-- update user button -->
-    <input type="submit" value="Update {{selectedUser.username}}"> <br>
+    <input type="submit" value="Update {{selectedUser.username}}" (click)="updateUser(updateUserForm)"> <br>
     <!-- back button -->
     <button (click)="goBack()">Go Back</button> <br>
     <!-- delete button -->

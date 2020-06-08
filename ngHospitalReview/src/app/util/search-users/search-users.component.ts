@@ -76,6 +76,17 @@ export class SearchUsersComponent implements OnInit {
 
   }
 
+  updateUser(form: NgForm) {
+    const updatedUser = form.value;
+    console.log(updatedUser);
+    this.userService.update(updatedUser.id, updatedUser).subscribe(
+      good => {
+        this.reload();
+        this.goBack();
+      }
+    );
+  }
+
   goBack(){
     this.selectedUser = null;
   }
