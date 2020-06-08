@@ -42,7 +42,16 @@ export class UserService {
         console.log(err);
         return throwError('Error getting user');
       })
-    )
+    );
+  }
+
+  searchUsersByKeyword(keyword: String) : Observable<any> {
+    return this.http.get<any[]>(this.url + '/search/' + keyword).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('Error in retreive a list of Users matching: ' + keyword);
+      })
+    );
   }
 
   // Creating Users

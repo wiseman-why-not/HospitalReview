@@ -52,6 +52,11 @@ public class UserServiceImpl implements UserService {
 		return userRepo.findAll();
 	}
 	
+	@Override
+	public List<User> findByUsersByKeyword(String keyword) {
+		return userRepo.findByUsernameContaining(keyword);
+	}
+	
 	// U P D A T E 
 	@Override
 	public User updateUser(User updatedUser) {
@@ -93,6 +98,9 @@ public class UserServiceImpl implements UserService {
 		}
 
 	}
+
+
+	
 	
 
 

@@ -14,6 +14,9 @@ export class SearchUsersComponent implements OnInit {
 
   users: User[] = [];
   searchedUsers = [];
+  foundUsers = false;
+  seletedUser = null;
+  searchTerm = '';
     // F I E L D S
     // id: number;
     // username: string;
@@ -42,6 +45,17 @@ export class SearchUsersComponent implements OnInit {
 
       err => console.error('Observe got in an error getting all users : ' + err)
     );
+  }
+
+  searchUsers(keyword: string) {
+    this.searchTerm = keyword;
+    console.log(this.searchTerm);
+    this.userService.searchUsersByKeyword(this.searchTerm).subscribe(
+      good => this.searchedUsers = good,
+
+      err => console.error('Observer got in an error getting users by keyword: ' + err)
+    );
+    this.foundUsers = true;
   }
 
   createNewUser(form: NgForm){

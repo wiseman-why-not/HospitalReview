@@ -55,6 +55,12 @@ public class UserController {
 		return userSvc.findById(userId);
 	}
 	
+	@GetMapping("user/search/{keyword}")
+	public List<User> getUsersByKeyword(@PathVariable String keyword) {
+		System.out.println("----------- Someone is trying to get Users that match with : " + keyword + "-------------");
+		return userSvc.findByUsersByKeyword(keyword);
+	}
+	
 	@PostMapping("user")
 	public User addUser(@RequestBody User user) {
 		System.out.println("----------- Someone is trying to create a User : " + "-------------");

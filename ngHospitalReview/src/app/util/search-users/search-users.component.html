@@ -1,10 +1,39 @@
 <h1>Search User</h1>
-<form #searchUserForm="ngForm" (ngSubmit)="onSubmit()">
+<form action="*" method="GET" #searchUserForm="ngForm" >
   <label for="username">Username: </label>
-  <input type="search" name="username" id="" placeholder="123RickRoll">
-  <input type="submit" value="Search User">
+  <input ngModel type="search" name="username" id="username" placeholder="123RickRoll" #searchWord="ngModel" >
+  <input type="submit" value="Search User" (click)="searchUsers(searchWord.value)">
 </form>
 
+<br>
+<div *ngIf="foundUsers">
+<h1>List of Found Users Matching {{searchTerm}}</h1>
+<table>
+  <thead>
+    <tr>
+      <td>id</td>
+      <td>username</td>
+      <td>password</td>
+      <td>age</td>
+      <td>gender</td>
+      <td>posts</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of searchedUsers">
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.password}}</td>
+      <td>{{user.age}}</td>
+      <td>{{user.gender}}</td>
+      <td>
+        <!-- list of user's post -->
+        <p *ngFor="let post of user.posts">{{post}}</p>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
 
 
 <br>
