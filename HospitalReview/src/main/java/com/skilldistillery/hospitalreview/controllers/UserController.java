@@ -45,30 +45,33 @@ public class UserController {
 	
 	@GetMapping("users")
 	public List<User> allUsers(){
-		System.out.println("got to list all");
+		System.out.println("----------- Someone is trying to get all User : " + "-------------");
 		return userSvc.getAllUsers();
 	}
 	
 	@GetMapping("user/{userId}")
 	public User userById(@PathVariable Integer userId) {
-		System.out.println("got to list one");
+		System.out.println("----------- Someone is trying to get a User : " + "-------------");
 		return userSvc.findById(userId);
 	}
 	
 	@PostMapping("user")
 	public User addUser(@RequestBody User user) {
+		System.out.println("----------- Someone is trying to create a User : " + "-------------");
 		User newUser = userSvc.createUser(user);
 		return newUser;
 	}
 	
 	@PutMapping("user")
 	public User updateUser(@RequestBody User user) {
+		System.out.println("----------- Someone is trying to update a User : " + "-------------");
 		user = userSvc.updateUser(user);
 		return user;
 	}
 	
 	@DeleteMapping("user")
 	public Boolean deleteUser(@RequestBody User user) {
+		System.out.println("----------- Someone is trying to delete a User : " + "-------------");
 		return userSvc.deleteUser(user.getUsername());
 	}
 	

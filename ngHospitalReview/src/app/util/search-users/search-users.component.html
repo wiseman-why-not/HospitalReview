@@ -37,4 +37,23 @@
 
 <br>
 <h1>Create User</h1>
+<form #createUserForm ="ngForm">
+  <!-- username -->
+  <label for="username">Username:</label>
+  <input type="text" name="username" id="username" class="form-control" ngModel> <br>
 
+  <!-- password -->
+  <label for="password">Password:</label>
+  <input type="text" name="password" id="password" class="form-control" ngModel> <br>
+
+  <!-- age -->
+  <label for="age">Age:</label>
+  <input type="text" name="age" id="age" class="form-control" ngModel> <br>
+
+  <!-- gender -->
+  <label for="gender">Gender:</label>
+  <input type="text" name="gender" id="gender" class="form-control" ngModel> <br>
+
+  <!-- submit button -->
+  <input type="submit" value="Create User" (click)="createNewUser(createUserForm)"> <br>
+</form>

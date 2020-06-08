@@ -50,7 +50,7 @@ export class UserService {
     return this.http.post<any>(this.url, user, this.httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
-        return throwError('Error creating user');
+        return throwError('Error creating user. In User Service method CREATE!!!!!!');
       })
     );
   }

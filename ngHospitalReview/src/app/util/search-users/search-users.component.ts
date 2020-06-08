@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { Post } from './../../models/post';
 import { User } from './../../models/user';
 import { UserService } from './../../services/user.service';
@@ -11,7 +12,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchUsersComponent implements OnInit {
 
-  users: User[];
+  users: User[] = [];
+  searchedUsers = [];
     // F I E L D S
     // id: number;
     // username: string;
@@ -23,6 +25,10 @@ export class SearchUsersComponent implements OnInit {
   constructor(private userService : UserService) { }
 
   ngOnInit(): void {
+    this.reload();
+  }
+
+  reload(): void {
     this.getAllUsers();
   }
 
@@ -36,6 +42,20 @@ export class SearchUsersComponent implements OnInit {
 
       err => console.error('Observe got in an error getting all users : ' + err)
     );
+  }
+
+  createNewUser(form: NgForm){
+    const user: User = form.value;
+    console.log(user);
+    this.userService.create(user).subscribe(
+      good => {
+        this.reload();
+        form.reset();
+      },
+
+      err => console.error('Observer got in an error creating user: ' + err)
+    );
+
   }
 
 
