@@ -99,7 +99,18 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-
+	@Override
+	public boolean deleteUserbyId(Integer userId) {
+		User user = userRepo.findById(userId).get();
+		
+		try {
+			userRepo.delete(user);
+			return true;
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 	
 

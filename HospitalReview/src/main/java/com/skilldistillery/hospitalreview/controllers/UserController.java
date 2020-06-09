@@ -88,6 +88,15 @@ public class UserController {
 		System.out.println("----------- Someone is trying to delete a User : " + "-------------");
 		return userSvc.deleteUser(user.getUsername());
 	}
+
+	
+	@DeleteMapping("user/{userId}")
+	public Boolean deleteUserById(@PathVariable Integer userId) {
+		System.out.println("----------- Someone is trying to delete a User by Id : " + "-------------");
+		return userSvc.deleteUserbyId(userId);
+	}
+	
+	
 	
 
 }

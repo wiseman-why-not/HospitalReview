@@ -83,7 +83,21 @@ export class SearchUsersComponent implements OnInit {
       good => {
         this.reload();
         this.goBack();
-      }
+      },
+      err => console.error('Observer got in an updating a user: ' + err)
+    );
+  }
+
+
+
+  deleteUser(id: number) : void {
+    this.userService.deleteById(id).subscribe(
+      good => {
+        this.reload();
+        this.goBack();
+      },
+
+      err => console.error('Observer got in an error deleting user: ' + err)
     );
   }
 

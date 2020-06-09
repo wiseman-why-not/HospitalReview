@@ -88,7 +88,7 @@
     <!-- back button -->
     <button (click)="goBack()">Go Back</button> <br>
     <!-- delete button -->
-    <button>Delete {{selectedUser.username}}</button> <br>
+    <input type="submit" (click)="deleteUser(selectedUser.id)" value="Delete {{selectedUser.username}}"> <br>
   </form>
 </div>
 

@@ -27,4 +27,6 @@ public interface UserService {
 	public User findById(Integer userId);
 
 	public User createUser(User user);
+
+	boolean deleteUserbyId(Integer userId);
 }

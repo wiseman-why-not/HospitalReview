@@ -75,11 +75,20 @@ export class UserService {
   }
 
    // Deleting User
-   delete(id: number) : Observable<any> {
-    return this.http.post<any>(this.url + "/" + id, this.httpOptions).pipe(
+   deleteById(id: number) : Observable<any> {
+    return this.http.delete<any>(this.url + "/" + id, this.httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
-        return throwError('Error deleting user');
+        return throwError('Error deleting user by Id');
+      })
+    )
+  }
+
+  delete(user: User) : Observable<any> {
+    return this.http.delete<any>(this.url,this.httpOptions).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('Error deleting user by request body');
       })
     )
   }
