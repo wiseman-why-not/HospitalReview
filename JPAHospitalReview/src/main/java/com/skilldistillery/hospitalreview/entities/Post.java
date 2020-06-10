@@ -39,8 +39,8 @@ public class Post {
 	private Hospital hospital;
 	
 	@OneToOne
-	@JoinColumn(name="procedure_id")
-	private Procedure procedure;
+	@JoinColumn(name="medicalprocedure_id")
+	private MedicalProcedure medicalprocedure;
 	
 	// C O N S T R U C T O R S
 	
@@ -97,12 +97,12 @@ public class Post {
 		this.hospital = hospital;
 	}
 
-	public Procedure getProcedure() {
-		return procedure;
+	public MedicalProcedure getMedicalProcedure() {
+		return medicalprocedure;
 	}
 
-	public void setProcedure(Procedure procedure) {
-		this.procedure = procedure;
+	public void setMedicalProcedure(MedicalProcedure medicalProcedure) {
+		this.medicalprocedure = medicalProcedure;
 	}
 	
 	// H A S H & T O S T R I N G 

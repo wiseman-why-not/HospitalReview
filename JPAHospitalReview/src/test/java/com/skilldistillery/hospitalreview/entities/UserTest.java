@@ -24,6 +24,7 @@ class UserTest {
 	private EntityManager em;
 	private User user;
 	private Hospital hospital;
+//	private MedicalProcedure medicalprocedure;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -40,12 +41,14 @@ class UserTest {
 		em = emf.createEntityManager();
 		user = em.find(User.class, 5);
 		hospital = em.find(Hospital.class, 2);
+//		medicalprocedure = em.find(MedicalProcedure.class, 2);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		user = null;
 		hospital = null;
+//		medicalprocedure = null;
 		em.close();
 	}
 
@@ -60,6 +63,13 @@ class UserTest {
 	void test2() {
 		assertEquals("Saint Joseph Hospital", hospital.getName());
 	}
+	
+//	@Test
+//	@DisplayName("procedure test")
+//	void test3() {
+//		assertEquals("Circumcision", medicalprocedure.getProcedureName());
+//	}
+
 	
 
 }

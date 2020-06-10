@@ -6,9 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table
-public class Procedure {
+@Table(name="medicalprocedure")
+public class MedicalProcedure {
 
 	// F I E L D S
 	
@@ -17,7 +19,7 @@ public class Procedure {
 	private int id;
 
 	@Column(name="procedure_name")
-	private String prcedureName;
+	private String procedureName;
 	
 	@Column(name="description")
 	private String description;
@@ -25,12 +27,12 @@ public class Procedure {
 	@Column(name = "cost")
 	private Integer cost;
 	
-	@OneToOne(mappedBy="procedure")
+	@OneToOne(mappedBy="medicalprocedure")
 	private Post post;
 	
 	// C O N S T R U C T O R S
 	
-	public Procedure() {
+	public MedicalProcedure() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -46,12 +48,12 @@ public class Procedure {
 		this.id = id;
 	}
 
-	public String getPrcedureName() {
-		return prcedureName;
+	public String getProcedureName() {
+		return procedureName;
 	}
 
-	public void setPrcedureName(String prcedureName) {
-		this.prcedureName = prcedureName;
+	public void setProcedureName(String procedureName) {
+		this.procedureName = procedureName;
 	}
 
 	public String getDescription() {
@@ -82,7 +84,7 @@ public class Procedure {
 
 	@Override
 	public String toString() {
-		return "Procedure [id=" + id + ", prcedureName=" + prcedureName + ", description=" + description + ", cost="
+		return "Procedure [id=" + id + ", procedureName=" + procedureName + ", description=" + description + ", cost="
 				+ cost ;
 	}
 
@@ -102,7 +104,7 @@ public class Procedure {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Procedure other = (Procedure) obj;
+		MedicalProcedure other = (MedicalProcedure) obj;
 		if (id != other.id)
 			return false;
 		return true;
