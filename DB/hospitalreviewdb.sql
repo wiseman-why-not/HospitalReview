@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS `post` ;
 CREATE TABLE IF NOT EXISTS `post` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `review` BLOB NOT NULL,
-  `create date` DATETIME NOT NULL,
+  `create_date` DATETIME NOT NULL,
   `hospital_id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
   `medicalprocedure_id` INT(11) NOT NULL,
