@@ -73,7 +73,7 @@ DROP TABLE IF EXISTS `post` ;
 
 CREATE TABLE IF NOT EXISTS `post` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `review` BLOB NOT NULL,
+  `review` VARCHAR(1000) NOT NULL,
   `create_date` DATETIME NOT NULL,
   `hospital_id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
@@ -164,6 +164,18 @@ INSERT INTO `medicalprocedure` (`id`, `procedure_name`, `description`, `cost`) V
 INSERT INTO `medicalprocedure` (`id`, `procedure_name`, `description`, `cost`) VALUES (19, 'thoracentesis', 'Thoracentesis is a procedure in which a needle is inserted into the pleural space between the lungs and the chest wall. This procedure is done to remove excess fluid, known as a pleural effusion, from the pleural space to help you breathe easier.', 0);
 INSERT INTO `medicalprocedure` (`id`, `procedure_name`, `description`, `cost`) VALUES (20, 'laparotomy (Ruptured Spleen)', ' Many people with a ruptured spleen experience serious bleeding that requires immediate surgery on the abdomen. The surgeon will cut open the abdomen and operate with a procedure called a laparotomy.', 0);
 INSERT INTO `medicalprocedure` (`id`, `procedure_name`, `description`, `cost`) VALUES (21, 'Open Reduction Internal Fixation (Broken bones)', 'Internal fixation is an operation in orthopedics that involves the surgical implementation of implants for the purpose of repairing a bone, a concept that dates to the mid-nineteenth century and was made applicable for routine treatment in the mid-twentieth century.', 0);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `post`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `hospitaldb`;
+INSERT INTO `post` (`id`, `review`, `create_date`, `hospital_id`, `user_id`, `medicalprocedure_id`) VALUES (1, 'This is a test post. This C section was very expensive', '20200610', 1, 1, 1);
+INSERT INTO `post` (`id`, `review`, `create_date`, `hospital_id`, `user_id`, `medicalprocedure_id`) VALUES (2, 'Another test review for a hospital', '20200611', 2, 3, 17);
+INSERT INTO `post` (`id`, `review`, `create_date`, `hospital_id`, `user_id`, `medicalprocedure_id`) VALUES (3, 'A third Test review for the third hospital', '20200611', 3, 5, 11);
 
 COMMIT;
 

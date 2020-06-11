@@ -25,6 +25,7 @@ class UserTest {
 	private User user;
 	private Hospital hospital;
 	private MedicalProcedure medicalprocedure;
+	private Post post;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -42,6 +43,7 @@ class UserTest {
 		user = em.find(User.class, 5);
 		hospital = em.find(Hospital.class, 2);
 		medicalprocedure = em.find(MedicalProcedure.class, 2);
+		post = em.find(Post.class, 2);
 	}
 
 	@AfterEach
@@ -49,6 +51,7 @@ class UserTest {
 		user = null;
 		hospital = null;
 		medicalprocedure = null;
+		post = null;
 		em.close();
 	}
 
@@ -70,8 +73,11 @@ class UserTest {
 		assertEquals("Circumcision", medicalprocedure.getProcedureName());
 	}
 	
+	@Test
+	@DisplayName("post test")
+	void test4() {
+		assertEquals("Another test review for a hospital", post.getReview());
+	}
 
-
-	
 
 }
