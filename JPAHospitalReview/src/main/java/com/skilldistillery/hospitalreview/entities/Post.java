@@ -1,5 +1,7 @@
 package com.skilldistillery.hospitalreview.entities;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="post")
@@ -27,7 +29,8 @@ public class Post {
 	private String review;
 	
 	@Column(name="create_date")
-	private String createDate;
+//	@Temporal(TemporalType.DATE)
+	private Date createDate;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -48,7 +51,7 @@ public class Post {
 		super();
 	}
 
-	public Post(int id, String review, String createDate) {
+	public Post(int id, String review, Date createDate) {
 		super();
 		this.id = id;
 		this.review = review;
@@ -73,11 +76,11 @@ public class Post {
 		this.review = review;
 	}
 
-	public String getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 

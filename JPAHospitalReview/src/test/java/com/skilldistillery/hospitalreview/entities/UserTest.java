@@ -76,7 +76,7 @@ class UserTest {
 	@Test
 	@DisplayName("post test")
 	void test4() {
-		assertEquals("Another test review for a hospital", post.getReview());
+		assertEquals("2020-06-11", post.getCreateDate().toString());
 	}
 
 
