@@ -12,10 +12,10 @@ package com.skilldistillery.hospitalreview.repositories;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
+import com.skilldistillery.hospitalreview.entities.Hospital;
 import com.skilldistillery.hospitalreview.entities.Post;
+import com.skilldistillery.hospitalreview.entities.User;
 
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
@@ -44,5 +44,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 	List<Post> findByHospital_NameContaining(String searchedHospitalName);
 	
 	List<Post> findByUser_UsernameContaining(String searchedUsername);
+	
+	List<Post> findByHospitalAndUser(Hospital hosptial, User user);
 	
 }

@@ -2,11 +2,13 @@ package com.skilldistillery.hospitalreview.services;
 
 import java.util.List;
 
+import com.skilldistillery.hospitalreview.entities.Hospital;
 import com.skilldistillery.hospitalreview.entities.Post;
+import com.skilldistillery.hospitalreview.entities.User;
 
 public interface PostServiceImpl {
 	
-	public Post getAllPost();
+	public List<Post> getAllPost();
 	
 	public List<Post> getAllPostByHospitalId(Integer hospitalId);
 	
@@ -20,9 +22,13 @@ public interface PostServiceImpl {
 	
 	public List<Post> getAllPostByMedicalProcedureId(Integer procedureId);
 	
+	public List<Post> getAllPostByHospital(Hospital hospital);
+	
 	public List<Post> getAllPostByHospitalIdAndMedicalProcedureName(Integer hospitalId, String procedureName);
 	
 	public List<Post> getAllPostByHospitalIdAndMedicalProcedureId(Integer hospitalId, Integer procedureId);
+	
+	public List<Post> getAllPostByHospitalAndUser(Hospital hospital, User user);
 	
 	public Post createPost(Post post);
 	
