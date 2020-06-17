@@ -43,6 +43,12 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 	// ***** these two methods should do the same, will test and see ********
 	List<Post> findByHospital_NameContaining(String searchedHospitalName);
 	
+	List<Post> findByHospital(Hospital hospital);
+	
+	List<Post> findByHospital_IdAndMedicalprocedure_Id(Integer hospitalId, Integer medicalprocedureId);
+	
+	List<Post> findByHospital_IdAndMedicalprocedure_procedureNameContaining(Integer hospitalId, String procedureName);
+	
 	List<Post> findByUser_UsernameContaining(String searchedUsername);
 	
 	List<Post> findByHospitalAndUser(Hospital hosptial, User user);
