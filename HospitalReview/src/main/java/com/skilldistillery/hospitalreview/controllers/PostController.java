@@ -11,6 +11,8 @@ import com.skilldistillery.hospitalreview.services.PostService;
 @RequestMapping("api")
 @CrossOrigin({"*", "http://localhost:4200"})
 public class PostController {
+	
+	// post controller created but not needed for current iteration of application.
 
 	// Autowired Services
 	@Autowired

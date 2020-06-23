@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.hospitalreview.entities.Hospital;
+import com.skilldistillery.hospitalreview.entities.Post;
 import com.skilldistillery.hospitalreview.services.HospitalService;
+import com.skilldistillery.hospitalreview.services.PostService;
 
 @RestController
 @RequestMapping("api")
@@ -25,6 +27,8 @@ public class HospitalController {
 	
 	@Autowired
 	private HospitalService hospSvc;
+	
+	private PostService postSvc;
 
 	@GetMapping("hospitals")
 	public List<Hospital> allHospitals(){
@@ -35,6 +39,21 @@ public class HospitalController {
 	@GetMapping("hospital/{hospitalId}")
 	public Hospital getHospitalById(@PathVariable Integer hospitalId) {
 		return hospSvc.findById(hospitalId);
+	}
+	
+	@GetMapping("hospital/{hospitalId}/posts")
+	public List<Post> getHospitalPosts(@PathVariable Integer hospitalId){
+		return postSvc.getAllPostByHospitalId(hospitalId);
+	}
+	
+	@GetMapping("hospital/{hospitalId}/{procedureId}")
+	public List<Post> getHospitalPostsByProcedureId(@PathVariable Integer hospitalId, @PathVariable Integer procedureId){
+		return postSvc.getAllPostByHospitalIdAndMedicalProcedureId(hospitalId, procedureId);
+	}
+	
+	@GetMapping("hospital/{hospitalId}/{procedureName}")
+	public List<Post> getHospitalPostsByProcedureName(@PathVariable Integer hospitalId, @PathVariable String procedureName){
+		return postSvc.getAllPostByHospitalIdAndMedicalProcedureName(hospitalId, procedureName);
 	}
 	
 	@GetMapping("hospital/search/{keyword}")
