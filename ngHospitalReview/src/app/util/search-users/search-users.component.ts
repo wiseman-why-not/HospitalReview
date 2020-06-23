@@ -16,6 +16,7 @@ export class SearchUsersComponent implements OnInit {
   searchedUsers = [];
   foundUsers = false;
   selectedUser = null;
+  selectedUserPost : Post[] = [];
   searchTerm = '';
     // F I E L D S
     // id: number;
@@ -60,6 +61,7 @@ export class SearchUsersComponent implements OnInit {
 
   getSelectedUser(chosenUser: User){
     this.selectedUser = chosenUser;
+    this.selectedUserPost = chosenUser.posts;
   }
 
   createNewUser(form: NgForm){

@@ -15,6 +15,7 @@
       <td>city</td>
       <td>state</td>
       <td>zip code</td>
+      <td>reviews</td>
     </tr>
   </thead>
   <tbody>
@@ -24,7 +25,10 @@
       <td>{{hospital.street}}</td>
       <td>{{hospital.city}}</td>
       <td>{{hospital.state}}</td>
-      <td>zip {{hospital.zipCode}}</td>
+      <td>zip: {{hospital.zipCode}}</td>
+      <td>
+        <p *ngFor="let post of hospital.posts">{{post.review}}</p>
+      </td>
     </tr>
   </tbody>
 </table>

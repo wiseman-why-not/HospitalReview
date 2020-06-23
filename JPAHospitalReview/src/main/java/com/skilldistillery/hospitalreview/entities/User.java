@@ -111,11 +111,7 @@ public class User {
 	
 	// H A S H & T O S T R I N G 
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", age=" + age + ", gender="
-				+ gender + "]";
-	}
+	
 
 	@Override
 	public int hashCode() {
@@ -123,6 +119,12 @@ public class User {
 		int result = 1;
 		result = prime * result + id;
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", age=" + age + ", gender="
+				+ gender + "]";
 	}
 
 	@Override

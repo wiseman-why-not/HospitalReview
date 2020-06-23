@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.hospitalreview.entities.Post;
 import com.skilldistillery.hospitalreview.entities.User;
+import com.skilldistillery.hospitalreview.services.PostService;
 import com.skilldistillery.hospitalreview.services.UserService;
 
 /* 
@@ -43,6 +45,8 @@ public class UserController {
 	@Autowired
 	private UserService userSvc;
 	
+	private PostService postSvc;
+	
 	@GetMapping("users")
 	public List<User> allUsers(){
 		System.out.println("----------- Someone is trying to get all User : " + "-------------");
@@ -53,6 +57,12 @@ public class UserController {
 	public User userById(@PathVariable Integer userId) {
 		System.out.println("----------- Someone is trying to get a User : " + "-------------");
 		return userSvc.findById(userId);
+	}
+	
+	@GetMapping("user/{userId}/posts")
+	public List<Post> getUserPost(@PathVariable Integer userId) {
+		System.out.println("----------- Someone is trying to get a User's Posts : " + "-------------");
+		return postSvc.getAllPostByUserId(userId);
 	}
 	
 	@GetMapping("user/search/{keyword}")

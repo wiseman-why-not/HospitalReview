@@ -10,6 +10,8 @@ public interface PostService {
 	
 	public List<Post> getAllPost();
 	
+	Post getPostById(Integer postId);
+	
 	public List<Post> getAllPostByHospitalId(Integer hospitalId);
 	
 	public List<Post> getAllPostByUserId(Integer hosptialId);
@@ -37,6 +39,7 @@ public interface PostService {
 	public Post updatePostById(Integer postId);
 	
 	public boolean deletePostById(Integer postId);
+
 	
 	
 	

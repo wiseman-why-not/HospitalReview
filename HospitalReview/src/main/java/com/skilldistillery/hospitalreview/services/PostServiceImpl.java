@@ -12,12 +12,14 @@ package com.skilldistillery.hospitalreview.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.hospitalreview.entities.Hospital;
 import com.skilldistillery.hospitalreview.entities.Post;
 import com.skilldistillery.hospitalreview.entities.User;
 import com.skilldistillery.hospitalreview.repositories.PostRepository;
 
+@Service
 public class PostServiceImpl implements PostService {
 
 	// Autowire the repositories
@@ -31,6 +33,11 @@ public class PostServiceImpl implements PostService {
 	public List<Post> getAllPost() {
 		return postRepo.findAll();
 	}
+	
+	@Override
+	public Post getPostById(Integer postId) {
+		return postRepo.findById(postId).get();
+	}
 
 	@Override
 	public List<Post> getAllPostByHospitalId(Integer hospitalId) {
@@ -38,8 +45,8 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> getAllPostByUserId(Integer hosptialId) {
-		return postRepo.findByUser_Id(hosptialId);
+	public List<Post> getAllPostByUserId(Integer userId) {
+		return postRepo.findByUser_Id(userId);
 	}
 
 	@Override

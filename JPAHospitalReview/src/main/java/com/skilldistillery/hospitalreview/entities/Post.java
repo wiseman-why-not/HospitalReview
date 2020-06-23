@@ -11,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="post")
@@ -35,7 +35,6 @@ public class Post {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-	
 
 	@ManyToOne
 	@JoinColumn(name="hospital_id")

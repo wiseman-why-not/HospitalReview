@@ -27,6 +27,7 @@ public class MedicalProcedure {
 	@Column(name = "cost")
 	private Integer cost;
 	
+	@JsonIgnore
 	@OneToOne(mappedBy="medicalprocedure")
 	private Post post;
 	
