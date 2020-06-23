@@ -54,7 +54,7 @@
       <td>{{user.gender}}</td>
       <td>
         <!-- list of user's post -->
-        <p *ngFor="let post of user.posts">{{post}}</p>
+        <p *ngFor="let post of user.posts">{{post.review}}</p>
       </td>
     </tr>
   </tbody>
@@ -90,7 +90,6 @@
 
    <!-- list of user's post -->
    <h4>{{selectedUser.username}}'s Posts:</h4>
-   <p>{{selectedUserPost}}</p>
    <p *ngFor="let post of selectedUserPost">1.post: {{post.review}}</p>
 </div>
 

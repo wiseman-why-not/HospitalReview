@@ -32,6 +32,8 @@ public class Post {
 //	@Temporal(TemporalType.DATE)
 	private Date createDate;
 	
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;

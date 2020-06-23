@@ -39,7 +39,7 @@ public class User {
 	@Column(name="gender")
 	private String gender;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Post> posts;
 	
@@ -111,7 +111,11 @@ public class User {
 	
 	// H A S H & T O S T R I N G 
 
-	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", age=" + age + ", gender="
+				+ gender + ", posts=" + posts + "]";
+	}
 
 	@Override
 	public int hashCode() {
@@ -119,12 +123,6 @@ public class User {
 		int result = 1;
 		result = prime * result + id;
 		return result;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", age=" + age + ", gender="
-				+ gender + "]";
 	}
 
 	@Override
