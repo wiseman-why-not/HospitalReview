@@ -70,7 +70,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public List<Post> getAllPostByHospitalIdAndMedicalProcedureName(Integer hospitalId, String procedureName) {
-  		return postRepo.findByHospital_IdAndMedicalprocedure_procedureNameContaining(hospitalId, procedureName);
+   		return postRepo.findByHospital_IdAndMedicalprocedure_procedureNameContaining(hospitalId, procedureName);
 	}
 
 	@Override
