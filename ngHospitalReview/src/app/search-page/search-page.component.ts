@@ -18,6 +18,7 @@ export class SearchPageComponent implements OnInit {
   selected = false;
   searchTerm = '';
   selectedHospital = null;
+  selectedHospitalPost : Post[] = [];
 
 
   constructor(private hospitalService: HospitalService) { }
@@ -89,6 +90,7 @@ export class SearchPageComponent implements OnInit {
 
   getSelectedHospital(chosenHospital: Hospital){
     this.selectedHospital = chosenHospital;
+    this.selectedHospitalPost = chosenHospital.posts;
   }
 
   goBack() {

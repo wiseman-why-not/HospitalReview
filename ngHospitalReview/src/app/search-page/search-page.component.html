@@ -98,7 +98,11 @@
   <br>
   </form>
 
+  <br>
+  <h4>{{selectedHospital.name}}'s post</h4>
+  <p *ngFor="let post of selectedHospitalPost">Review: {{post.review}}</p>
 
+  <br>
 </div>
 
 <h1>Create Hospitals</h1>

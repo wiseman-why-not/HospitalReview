@@ -37,11 +37,13 @@ public class Post {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="hospital_id")
 	private Hospital hospital;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="medicalprocedure_id")
 	private MedicalProcedure medicalprocedure;

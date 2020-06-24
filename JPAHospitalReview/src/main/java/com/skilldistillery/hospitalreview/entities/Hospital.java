@@ -37,7 +37,7 @@ public class Hospital {
 	@Column(name="zip_code")
 	private Integer zipCode;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy="hospital")
 	private List<Post> posts;
 	
@@ -154,11 +154,14 @@ public class Hospital {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Hospital [name=" + name + "]";
+		return "Hospital [id=" + id + ", name=" + name + ", street=" + street + ", city=" + city + ", state=" + state
+				+ ", zipCode=" + zipCode + "]";
 	}
+
+
+	
 	 
 	
 }
