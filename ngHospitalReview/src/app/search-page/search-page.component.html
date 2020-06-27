@@ -99,10 +99,17 @@
   </form>
 
   <br>
+  <!-- hospitals post -->
+  <div>
   <h4>{{selectedHospital.name}}'s post</h4>
   <p *ngFor="let post of selectedHospitalPost">Review: {{post.review}}</p>
-
+  </div>
   <br>
+
+  <!-- add post to hospital -->
+  <div>
+    <h4>Add a Review to {{selectedHospital.name}}</h4>
+  </div>
 </div>
 
 <h1>Create Hospitals</h1>

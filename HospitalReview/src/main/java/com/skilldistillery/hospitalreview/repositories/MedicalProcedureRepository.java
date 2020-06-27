@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.skilldistillery.hospitalreview.entities.MedicalProcedure;
 
-public interface ProcedureRepository extends JpaRepository<MedicalProcedure, Integer> {
+public interface MedicalProcedureRepository extends JpaRepository<MedicalProcedure, Integer> {
 
+	
 }
