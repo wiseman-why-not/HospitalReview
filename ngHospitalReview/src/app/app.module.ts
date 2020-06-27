@@ -1,3 +1,6 @@
+import { PostService } from './services/post.service';
+import { MedicalProcedureService } from './services/medical-procedure.service';
+import { UserService } from './services/user.service';
 import { HospitalService } from './services/hospital.service';
 import { HttpClientModule} from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,7 +31,11 @@ import { SearchUsersComponent } from './util/search-users/search-users.component
     FormsModule,
     HttpClientModule
   ],
-  providers: [HospitalService],
+  providers: [
+    HospitalService,
+    UserService,
+    MedicalProcedureService,
+    PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
