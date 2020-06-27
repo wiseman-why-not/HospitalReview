@@ -1,5 +1,6 @@
 package com.skilldistillery.hospitalreview.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,10 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
 		return medProRepo.findAll();
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public List<String> getAllMedicalProcedureNames() {
 		List<MedicalProcedure> allMedProcedures = medProRepo.findAll();
-		List<String> allMedProcedureNames = null;
+		List<String> allMedProcedureNames = new ArrayList<String>();
 		for (MedicalProcedure procedureName : allMedProcedures) {
 			allMedProcedureNames.add(procedureName.getProcedureName());
 		}

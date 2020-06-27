@@ -1,3 +1,4 @@
+import { MedicalProcedureService } from './../services/medical-procedure.service';
 import { HospitalService } from './../services/hospital.service';
 import { User } from './../models/user';
 import { Procedure } from './../models/procedure';
@@ -19,9 +20,13 @@ export class SearchPageComponent implements OnInit {
   searchTerm = '';
   selectedHospital = null;
   selectedHospitalPost : Post[] = [];
+  listOfMedicalProcedures: String[] = [];
 
 
-  constructor(private hospitalService: HospitalService) { }
+  constructor(
+    private hospitalService: HospitalService,
+    private procedureService: MedicalProcedureService
+    ) { }
 
   ngOnInit(): void {
     this.reload();
@@ -46,6 +51,7 @@ export class SearchPageComponent implements OnInit {
 
   reload() {
     this.getAllHospitals();
+    this.getProceduresNames();
   }
 
   createNewHospital(form: NgForm) {
@@ -95,6 +101,14 @@ export class SearchPageComponent implements OnInit {
 
   goBack() {
     this.selectedHospital = null;
+  }
+
+  getProceduresNames() {
+    this.procedureService.procedureNames().subscribe(
+      data => this.listOfMedicalProcedures = data,
+
+      err => console.error('Observer got an error getting procedure names' + err)
+    );
   }
 
 

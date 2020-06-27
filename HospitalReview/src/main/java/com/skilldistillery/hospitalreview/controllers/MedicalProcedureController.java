@@ -21,7 +21,7 @@ public class MedicalProcedureController {
 		@Autowired
 		private MedicalProcedureService medSvc;
 		
-		@GetMapping("procedure")
+		@GetMapping("procedures")
 		public List<MedicalProcedure> allMedicalProcedures(){
 			return medSvc.getAllMedicalProcedure();
 		}

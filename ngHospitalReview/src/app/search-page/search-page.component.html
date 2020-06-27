@@ -110,6 +110,7 @@
   <div>
     <h4>Add a Review to {{selectedHospital.name}}</h4>
     <form #createPost = "ngForm"></form>
+    <p *ngFor="let procedure of listOfMedicalProcedures">Procedure name: {{procedure}}</p>
   </div>
 </div>
 
