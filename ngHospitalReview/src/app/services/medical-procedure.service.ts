@@ -10,6 +10,7 @@ import { Observable, throwError } from 'rxjs';
 export class MedicalProcedureService {
 
   private procedures: Procedure[] = [];
+  private procedure: Procedure;
 
   private baseUrl = "http://localhost:8087/";
   private url = this.baseUrl + 'api/procedure';

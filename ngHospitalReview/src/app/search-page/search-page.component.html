@@ -109,8 +109,17 @@
   <!-- add post to hospital -->
   <div>
     <h4>Add a Review to {{selectedHospital.name}}</h4>
-    <form #createPost = "ngForm"></form>
-    <p *ngFor="let procedure of listOfMedicalProcedures">Procedure name: {{procedure}}</p>
+    <form #createPost = "ngForm">
+      <label>Medical Procedure:</label>
+      <select ngModel name="procedureName">
+        <option *ngFor="let procedureName of angularListOfProcedureNames">{{procedureName}}</option>
+      </select>
+      <br>
+      <label for="cost">How much did this procedure cost:</label>
+      <input ngModel type="number" name="cost" id="cost">
+      <br>
+      <button>Add Procedure to Post</button>
+    </form>
   </div>
 </div>
 

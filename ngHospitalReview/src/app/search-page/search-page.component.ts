@@ -20,8 +20,32 @@ export class SearchPageComponent implements OnInit {
   searchTerm = '';
   selectedHospital = null;
   selectedHospitalPost : Post[] = [];
-  listOfMedicalProcedures: String[] = [];
-
+  ListOfMedicalProcedures : Procedure[] = [];
+  listOfMedicalProceduresNames: String[] = [];
+  angularListOfProcedureNames: String[] = [
+    "Cesarean Section",
+    "Circumcision",
+    "Repair of current obstetric lacerations",
+    "Arthroplasty of knee (Knee Replacement)",
+    "Percutaneous coronary angioplasty (PTCA) ",
+    "Laminectomy",
+    "Spinal fusion",
+    "Hip replacement",
+    "cholecystectomy and common duct exploration",
+    "Hysterectomy, abdominal and vaginal",
+    "Colorectal resection",
+    "Blood transfusions",
+    "Respiratory intubation and mechanical ventilation",
+    "Upper gastrointestinal endoscopy",
+    "echocardiogram",
+    "Amniotomy (Artificial rupture of membranes to assist delivery)",
+    "Hemodialysis",
+    "Colonoscopy and biopsy",
+    "thoracentesis",
+    "laparotomy (Ruptured Spleen)",
+    "Open Reduction Internal Fixation (Broken bones)"
+];
+  postProcedure: Procedure;
 
   constructor(
     private hospitalService: HospitalService,
@@ -51,6 +75,7 @@ export class SearchPageComponent implements OnInit {
 
   reload() {
     this.getAllHospitals();
+    this.getAllMedicalProcedures();
     this.getProceduresNames();
   }
 
@@ -103,9 +128,21 @@ export class SearchPageComponent implements OnInit {
     this.selectedHospital = null;
   }
 
+  submitMedicalProcedure(form : NgForm) {
+    const submittedPorcedure : Procedure = form.value;
+  }
+
+  getAllMedicalProcedures(){
+    this.procedureService.index().subscribe(
+      data => this.ListOfMedicalProcedures = data,
+
+      err => console.error('Observer got an error getting procedure ' + err)
+    );
+  }
+
   getProceduresNames() {
     this.procedureService.procedureNames().subscribe(
-      data => this.listOfMedicalProcedures = data,
+      data => this.listOfMedicalProceduresNames = data,
 
       err => console.error('Observer got an error getting procedure names' + err)
     );

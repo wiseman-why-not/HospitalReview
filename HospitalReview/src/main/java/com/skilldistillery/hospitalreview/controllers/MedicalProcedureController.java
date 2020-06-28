@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,9 +23,11 @@ public class MedicalProcedureController {
 		@Autowired
 		private MedicalProcedureService medSvc;
 		
+		// R E A D
+		
 		@GetMapping("procedures")
-		public List<MedicalProcedure> allMedicalProcedures(){
-			return medSvc.getAllMedicalProcedure();
+		public List<MedicalProcedure> getAllMedicalProcedures(){
+			return medSvc.getAllMedicalProcedures();
 		}
 		
 		@GetMapping("procedureNames")
@@ -31,4 +35,9 @@ public class MedicalProcedureController {
 			return medSvc.getAllMedicalProcedureNames();
 		}
 		
+		@PostMapping("procedure")
+		public MedicalProcedure addMedicalProcedure(@RequestBody MedicalProcedure medicalProcedure) {
+			System.out.println("----------- Someone is trying to create a procedure : " + "-------------");
+			return null;
+		}
 }
