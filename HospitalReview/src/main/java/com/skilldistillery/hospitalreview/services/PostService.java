@@ -36,11 +36,8 @@ public interface PostService {
 	
 	public Post updatePost(Post updatedPost);
 	
-	public Post updatePostById(Integer postId);
+	public Post updatePostById(Integer postId, Post updatedPost);
 	
 	public boolean deletePostById(Integer postId);
 
-	
-	
-	
 }

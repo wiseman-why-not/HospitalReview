@@ -123,9 +123,24 @@ public class PostServiceImpl implements PostService {
 
 	// will remove update by Id because Post object will still need to be passed.
 	@Override
-	public Post updatePostById(Integer postId) {
+	public Post updatePostById(Integer postId, Post updatedPost) {
+		Post oldPost = postRepo.findById(postId).get();
 		
-		return null;
+		if (updatedPost.getReview() != null) {
+			oldPost.setReview(updatedPost.getReview());
+		}
+		
+		if (updatedPost.getCreateDate() != null) {
+			oldPost.setCreateDate(updatedPost.getCreateDate());
+		}
+		
+		if (updatedPost.getHospital() != null) {
+			oldPost.setHospital(updatedPost.getHospital());
+		}
+		
+		// save and returns the post in the database
+		postRepo.saveAndFlush(oldPost);
+		return oldPost;
 	}
 	
 	// D E L E T E
@@ -142,5 +157,6 @@ public class PostServiceImpl implements PostService {
 		}
 		
 	}
+
 
 }
