@@ -16,6 +16,8 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
 	@Autowired
 	private MedicalProcedureRepository medProRepo;
 	
+	//  R E A D
+	
 	@Override
 	public List<MedicalProcedure> getAllMedicalProcedures() {  
 		// TODO Auto-generated method stub
@@ -38,6 +40,7 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
 	}
 	
 	// C R E A T E
+	
 	@Override
 	public MedicalProcedure createMedicalProcedure(MedicalProcedure medProcedure) {
 		// will attempt to find an id, and will auto-gen one
@@ -46,7 +49,9 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
 		return newProcedure;
 		
 	}
-
+	
+	// U P D A T E
+	
 	@Override
 	public MedicalProcedure updateMedicalProcedure(MedicalProcedure medProcedure) {
 		MedicalProcedure oldProcedure = medProRepo.findById(medProcedure.getId()).get();
@@ -95,6 +100,8 @@ MedicalProcedure oldProcedure = medProRepo.findById(oldMedProcedureId).get();
 		return oldProcedure;
 	}
 
+	// D E L E T E
+	
 	@Override
 	public boolean deleteMedicalProcedureById(Integer medProcedureId) {
 		MedicalProcedure medProcedure = medProRepo.findById(medProcedureId).get();
